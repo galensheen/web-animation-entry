@@ -6,19 +6,24 @@ $(function() {
     var $scene = $('#scene').parallax();
 
     var imgs = {
-        '1': '/assets/img/circle01.jpg',
-        '2': '/assets/img/circle02.jpg',
-        '3': '/assets/img/circle03.jpg',
-        '4': '/assets/img/circle04.jpg',
-        '5': '/assets/img/circle05.jpg',
-        '6': '/assets/img/circle06.jpg',
-        '7': '/assets/img/circle07.jpg',
-        '8': '/assets/img/circle08.jpg',
-        '9': '/assets/img/circle09.jpg',
-        '10': '/assets/img/circle10.jpg',
-        '11': '/assets/img/circle11.jpg',
-        '12': '/assets/img/circle12.jpg'
+        '1': location.href + 'assets/img/circle01.jpg',
+        '2': location.href + 'assets/img/circle02.jpg',
+        '3': location.href + '/assets/img/circle03.jpg',
+        '4': location.href + '/assets/img/circle04.jpg',
+        '5': location.href + '/assets/img/circle05.jpg',
+        '6': location.href + '/assets/img/circle06.jpg',
+        '7': location.href + '/assets/img/circle07.jpg',
+        '8': location.href + '/assets/img/circle08.jpg',
+        '9': location.href + '/assets/img/circle09.jpg',
+        '10': location.href + '/assets/img/circle10.jpg',
+        '11': location.href + '/assets/img/circle11.jpg',
+        '12': location.href + '/assets/img/circle12.jpg'
     };
+
+    for (var img in imgs) {
+        var $link = $('<link rel="prefetch" href="' + imgs[img] +'"/>');
+        $('body').append($link);
+    }
 
     var count = 200;
     for (var i = 0; i < 3; i++) {
@@ -57,7 +62,7 @@ $(function() {
             clearTimeout(timeout);
         }
         var num = event.currentTarget.className.replace(/circle/g, '').trim();
-        $slides.css('transition', 'background .6s ease-in').css('background', 'url(' + location.href + imgs[num] + ') no-repeat');
+        $slides.css('transition', 'background .6s ease-in').css('background', 'url(' + imgs[num] + ') no-repeat');
     });
 
     // 10秒后取消background

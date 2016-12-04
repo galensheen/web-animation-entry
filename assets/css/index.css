@@ -11,6 +11,7 @@ body {
 body .container {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 body .container #scene ul,
 body .container #scene li {
@@ -19,6 +20,7 @@ body .container #scene li {
 }
 body .container #scene img {
   width: 100%;
+  height: 100%;
 }
 body .container .shadow {
   position: absolute;
@@ -59,7 +61,6 @@ body .container .shadow .slides {
   margin: auto;
   border-radius: 50%;
   background-color: #19191b;
-  transition: background 0.2s ease;
 }
 body .container .shadow .slides .anchor {
   position: absolute;

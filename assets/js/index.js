@@ -47,10 +47,31 @@ $(function() {
     }
 
     var $slides = $('.slides');
+    var $anchor = $('.anchor .circle');
 
-    $('.anchor .circle').hover(function (event) {
+    var timeout;
+
+    // 触发background
+    $anchor.mouseenter(function (event) {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
         var num = event.currentTarget.className.replace(/circle/g, '').trim();
         console.log(imgs[num] + ' no-repeat');
-        $slides.css('transition', 'all 1s ease-in').css('background', 'url(' + imgs[num] + ') no-repeat');
-    })
+        $slides.css('transition', 'background .6s ease-in').css('background', 'url(' + imgs[num] + ') no-repeat');
+    });
+
+    // 10秒后取消background
+    $anchor.mouseleave(function (event) {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(function () {
+            $slides.animate({
+                opacity: 0.2
+            }, 2000, function () {
+                $slides.css('opacity', '1').css('background', '');
+            });
+        }, 10 * 1000);
+    });
 });

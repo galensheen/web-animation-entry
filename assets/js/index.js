@@ -57,8 +57,7 @@ $(function() {
             clearTimeout(timeout);
         }
         var num = event.currentTarget.className.replace(/circle/g, '').trim();
-        console.log(imgs[num] + ' no-repeat');
-        $slides.css('transition', 'background .6s ease-in').css('background', 'url(' + imgs[num] + ') no-repeat');
+        $slides.css('transition', 'background .6s ease-in').css('background', 'url(' + location.href + imgs[num] + ') no-repeat');
     });
 
     // 10秒后取消background
